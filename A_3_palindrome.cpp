@@ -18,7 +18,7 @@ typedef long long ll;
 
 int main(){
  fast_cin();
- ll t,i,n,j,flag=0,mx=0,mn=1e9+7;
+ ll t,i,n,j,flag=0,mx=0,mn=1e9+7;//
  cin >> n;
  string s = "aabb";
  for (i = 0; i < n;i++)
