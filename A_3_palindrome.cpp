@@ -16,8 +16,7 @@ typedef long long ll;
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
  
 
-int main()
-{
+int main(){
  fast_cin();
  ll t,i,n,j,flag=0,mx=0,mn=1e9+7;
  cin >> n;
