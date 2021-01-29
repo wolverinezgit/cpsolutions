@@ -13,7 +13,7 @@ typedef long long ll;
 #define pb push_back
 #define fast_cin() ios_base::sync_with_stdio(false); cin.tie(NULL); cout.tie(NULL)
 ll n;
-int knapsack(ll idx, ll weight, ll w[], ll val[],vector<vector<ll>>&dp)
+ll knapsack(ll idx, ll weight, ll w[], ll val[],vector<vector<ll>>&dp)
 {
 
 if(weight==0)
@@ -47,7 +47,7 @@ int main()
  ll weight;
  cin >>n>> weight;
  ll w[n], val[n];
- vector<vector<ll>> dp(vector<ll>(n+1,-1));
+ vector<vector<ll>> dp(n,vector<ll>(weight+1,-1));
  for (i = 0; i < n;i++)
 {
     cin >> w[i];
