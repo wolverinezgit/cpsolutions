@@ -17,41 +17,51 @@ typedef long long ll;
 int main()
 {
  fast_cin();
- ll t,i,n,j,flag=0,mx=0,mn=1e9+7;
+ ll t;
  cin >> t;
-while(t--){
-    ll a, b, k;
-    ll c1 = 0, c2 = 0;
-    cin >> a >> b >> k;
-    map<ll, ll> m1;
-    map<ll, ll> m2;
-    for (i = 1; i <= k;i++)
+ while (t--)
+ {
+     ll i, n, j, flag = 0, mx = 0, mn = 1e9 + 7;
+     cin >> n;
+     vector <pair<ll,ll>> v;
+     for (i = 0; i < n;i++)
 {
     ll p;
     cin >> p;
-    m1[p]++;
+    v.pb(mp(p, i));
 
 }
-for (i = 1; i <= k; i++)
+map<ll, ll> m1;
+for (i = 0; i < n;i++)
 {
     ll p;
     cin >> p;
-    m2[p]++;
+    m1[i] = p;
+
 }
-for(auto x:m1)
+sort(v.begin(), v.end());
+ll last = v[0].second;
+ll c = 0;
+for (i = 1; i < n;i++)
 {
-    c1 += ((x.second * (x.second - 1)) / 2);
-}
-for (auto x : m2)
+if(v[i].second>last)
 {
-    c2 += ((x.second*(x.second-1)) / 2);
+    last = v[i].second;
 }
-k = (k * (k - 1)) / 2;
-ll z = 0;
-if((k-c1-c2)>=0)
-    cout << k - c1 - c2 << endl;
 else
-cout << min(k - c1 - c2,z) << endl;
+{
+    ll d1 = (last - v[i].second);
+
+    ll d = (d1 / m1[v[i].second]) + 1;
+
+    c += d;
+    last = v[i].second + (d) * (m1[v[i].second]);
 }
+
+}
+cout << c << endl;
+}
+
+
  return 0;
 }

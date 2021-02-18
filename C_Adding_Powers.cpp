@@ -6,8 +6,6 @@ using namespace std;
  
 typedef long long ll;
 #define S second
-#define f first
-#define s second
 #define v vector
 #define pob pop_back
 #define pf push_front
@@ -19,52 +17,48 @@ typedef long long ll;
 int main()
 {
  fast_cin();
- ll t,i,n,j,flag=0,mx=0,mn=1e9+7;
- cin >> t;
-while(t--){
+ ll t;
+cin>>t;
+
+while(t--)
+{
+    ll i, n, j, flag = 0, mx = 0, mn = 1e9 + 7;
     cin >> n;
     ll k;
     cin >> k;
-    string s;
-    cin >> s;
-    ll lose = 0;
-    for (i = 0; i < s.length();i++)
+ll arr[n];
+ll f = 0;
+sort(arr, arr + n);
+map<ll, ll> m;
+for (i = 0; i < n;i++)
 {
-
-    if (s[i] == 'L' && s[i] == 'W')
+    cin >> arr[i];
+    ll c = 0;
+    while (arr[i])
     {
-if(k>0)
-{
-    sum += 3;
-    k--;
-    s[i] = 'W';
-    s[i + 1] = 'W';
+        
+            m[c++]+=arr[i]%k;
+           
+        
+        arr[i] /= k;
 }
+}
+for(auto x:m)
+{
+if(x.second>1)
+    f = 1;
+}
+if(f==0)
+    cout << "YES"
+         << "\n";
 else
 {
-    sum += 1;
-
-}
-
-      
-    }
-
- else if (s[i] == 'W' && s[i] == 'L')
-{
-    sum += 3;
-    k--;
-
-}
-else if(s[i]=='W'&&s[i+1]=='W')
-{
-    sum += 3;
-}
-else
-{
-    lose += 2;
+    cout << "NO"
+         << "\n";
 }
 
 }
-    }
+
+
  return 0;
 }

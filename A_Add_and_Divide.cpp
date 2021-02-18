@@ -6,8 +6,6 @@ using namespace std;
  
 typedef long long ll;
 #define S second
-#define f first
-#define s second
 #define v vector
 #define pob pop_back
 #define pf push_front
@@ -19,52 +17,55 @@ typedef long long ll;
 int main()
 {
  fast_cin();
- ll t,i,n,j,flag=0,mx=0,mn=1e9+7;
+ ll t;
  cin >> t;
-while(t--){
-    cin >> n;
-    ll k;
-    cin >> k;
-    string s;
-    cin >> s;
-    ll lose = 0;
-    for (i = 0; i < s.length();i++)
+ while (t--)
+ {
+     ll i, n, j, flag = 0, mx = 0, mn = 1e9 + 7;
+     ll a;
+    
+     cin >> n >> a;
+     ll c = 0;
+     while (n != 0)
+     {
+if(n<=a)
+{
+if(n==a)
+{
+    c += 2;
+    break;
+}
+else
+  {  c++;
+    break;
+  }
+}
+if(n%a==0)
 {
 
-    if (s[i] == 'L' && s[i] == 'W')
-    {
-if(k>0)
+    a++;
+    if(a>n)
 {
-    sum += 3;
-    k--;
-    s[i] = 'W';
-    s[i + 1] = 'W';
+    c += 2;
+    break;
 }
 else
 {
-    sum += 1;
-
+    c += 2;
+    n = n / a;
 }
 
-      
-    }
-
- else if (s[i] == 'W' && s[i] == 'L')
-{
-    sum += 3;
-    k--;
-
-}
-else if(s[i]=='W'&&s[i+1]=='W')
-{
-    sum += 3;
 }
 else
 {
-    lose += 2;
+    c++;
+    n /= a;
 }
 
 }
-    }
+cout<<c<<endl;
+}
+
+
  return 0;
 }
